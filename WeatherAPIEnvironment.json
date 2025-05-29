@@ -1,0 +1,39 @@
+{
+	"id": "230dcb3a-706d-4352-b55a-7e0c353a5e22",
+	"name": "WeatherAPITesting",
+	"values": [
+		{
+			"key": "PLATOAPITESTING",
+			"value": "1f9a297b58226a251a48bf645bee3dda",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "baseUrl",
+			"value": "https://api.openweathermap.org/data/2.5",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Forecast",
+			"value": "https://api.openweathermap.org/data/2.5/forecast",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "cityId",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "city_id",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2025-05-29T13:55:26.855Z",
+	"_postman_exported_using": "Postman/11.46.6"
+}

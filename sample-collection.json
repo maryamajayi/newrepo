@@ -1,0 +1,673 @@
+{
+	"info": {
+		"_postman_id": "52d65268-8887-49c3-9c41-ae76f69975a1",
+		"name": "Weather API Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28653869",
+		"_collection_link": "https://speeding-meadow-429802.postman.co/workspace/dc76c46c-9eb3-4a5d-a7df-93c63a3a4a2c/collection/28653869-52d65268-8887-49c3-9c41-ae76f69975a1?action=share&source=collection_link&creator=28653869"
+	},
+	"item": [
+		{
+			"name": "TC1 - Valid Current Weather by City Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/weather?q=Toronto&appid={{PLATOAPITESTING}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Toronto"
+						},
+						{
+							"key": "units",
+							"value": "metric",
+							"disabled": true
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC2 - Valid Current Weather by Coordinates",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/weather?lat=43.7001&lon=-79.4163&appid={{PLATOAPITESTING}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "43.7001"
+						},
+						{
+							"key": "lon",
+							"value": "-79.4163"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC3 - Valid Current Weather by ZIP Code ",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/weather?zip=90210,us&appid={{PLATOAPITESTING}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "zip",
+							"value": "90210,us"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						},
+						{
+							"key": "units",
+							"value": "metric",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC4 - Invalid City Name",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/weather?q=Wakanda&appid={{PLATOAPITESTING}}&units=metric",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Wakanda"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						},
+						{
+							"key": "units",
+							"value": "metric"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC5 - Invalid Coordinates",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/weather?lat=123&lon=456&appid={{PLATOAPITESTING}}&units=metric",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "123"
+						},
+						{
+							"key": "lon",
+							"value": "456"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						},
+						{
+							"key": "units",
+							"value": "metric"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC6 - Invalid ZIP Code",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/weather?zip=ABCDEF&appid={{PLATOAPITESTING}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "zip",
+							"value": "ABCDEF"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						},
+						{
+							"key": "units",
+							"value": "metric",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC7 - Missing API Key",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/weather?q=Toronto",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Toronto"
+						},
+						{
+							"key": "units",
+							"value": "metric",
+							"disabled": true
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC8 - Invalid API Key",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/weather?q=Toronto&appid=InvalidKey",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Toronto"
+						},
+						{
+							"key": "units",
+							"value": "metric",
+							"disabled": true
+						},
+						{
+							"key": "appid",
+							"value": "InvalidKey"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC9 - Valid 3hrs Forecast 5 days by City Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecast?q=Toronto&units=metric&appid={{PLATOAPITESTING}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Toronto"
+						},
+						{
+							"key": "units",
+							"value": "metric"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC10 - Valid 5hrs Forecast 5 days by City Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecast?units=metric&appid={{PLATOAPITESTING}}&lat=43.7001&lon=-79.4163",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Toronto",
+							"disabled": true
+						},
+						{
+							"key": "units",
+							"value": "metric"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						},
+						{
+							"key": "lat",
+							"value": "43.7001"
+						},
+						{
+							"key": "lon",
+							"value": "-79.4163"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC11 - Valid 3hrs Forecast 5 days by ZIP Code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecast?zip=90210,us&units=metric&appid={{PLATOAPITESTING}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "zip",
+							"value": "90210,us"
+						},
+						{
+							"key": "units",
+							"value": "metric"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC12 - Air Pollution API by City Name",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/air_pollution?lat=43.7001&lon=-79.4163&appid={{PLATOAPITESTING}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"air_pollution"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "43.7001"
+						},
+						{
+							"key": "lon",
+							"value": "-79.4163"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						},
+						{
+							"key": "q",
+							"value": "Toronto",
+							"disabled": true
+						},
+						{
+							"key": "start",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "end",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC13 - Air Pollution API by Cordinates",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/air_pollution/history?lat=43.7001&lon=-79.4163&appid={{PLATOAPITESTING}}&start=1606223802&end=1606482999",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"air_pollution",
+						"history"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "43.7001"
+						},
+						{
+							"key": "lon",
+							"value": "-79.4163"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						},
+						{
+							"key": "q",
+							"value": "Toronto",
+							"disabled": true
+						},
+						{
+							"key": "start",
+							"value": "1606223802"
+						},
+						{
+							"key": "end",
+							"value": "1606482999"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IGNORE: TC14 - Air Pollution API by ZIP Code",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/air_pollution?lat=43.7001&lon=-79.4163&appid={{PLATOAPITESTING}}&zip=12345,us",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"air_pollution"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "43.7001"
+						},
+						{
+							"key": "lon",
+							"value": "-79.4163"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						},
+						{
+							"key": "zip",
+							"value": "12345,us"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC15 - Extreme Temperature",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/weather?lat=-75.250973&lon=-0.071389&appid={{PLATOAPITESTING}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "-75.250973"
+						},
+						{
+							"key": "lon",
+							"value": "-0.071389"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC16 - Invalid Date Format",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/weather?lat=-75.250973&lon=-0.071389&appid={{PLATOAPITESTING}}&start=yyyyyy&end=222222",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "-75.250973"
+						},
+						{
+							"key": "lon",
+							"value": "-0.071389"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						},
+						{
+							"key": "start",
+							"value": "yyyyyy"
+						},
+						{
+							"key": "end",
+							"value": "222222"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC17 - Non-Existent City",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/weather?q=Non-Existent City&appid={{PLATOAPITESTING}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Non-Existent City"
+						},
+						{
+							"key": "units",
+							"value": "metric",
+							"disabled": true
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC18 - Non-Existent Coordinates",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/weather?lat=1234&lon=-1234&appid={{PLATOAPITESTING}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"weather"
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "1234"
+						},
+						{
+							"key": "lon",
+							"value": "-1234"
+						},
+						{
+							"key": "appid",
+							"value": "{{PLATOAPITESTING}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
