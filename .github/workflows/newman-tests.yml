@@ -2,10 +2,10 @@ name: Run Newman Tests
 on:
   push:
     branches:
-	  -main
+	  - main
   pull_request:
 	branches:
-	  -main
+	  - main
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -15,7 +15,7 @@ jobs:
 	  - name: Install Node.js
 	    uses: actions/setup-node@v3
 		with:
-		  node-version:'18'
+		  node-version: '18'
 	  - name: Install Newman
 		run: npm install -g Newman
 	  - name: Run Postman Collection
