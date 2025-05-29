@@ -17,6 +17,6 @@ jobs:
         with:
           node-version: '18'
       - name: Install Newman
-        run: npm install -g Newman
+        run: npm install -g newman
       - name: Run Postman Collection
         run: newman run sample-collection.json -e WeatherAPIEnvironment.json -r json --reporter-json-export results.json
