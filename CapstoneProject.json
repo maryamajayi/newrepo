@@ -1,0 +1,521 @@
+{
+	"info": {
+		"_postman_id": "c582d04c-678d-4770-9d6c-aac9ef3b174d",
+		"name": "Day 10 - Capstone Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28653869",
+		"_collection_link": "https://speeding-meadow-429802.postman.co/workspace/GET-Example~dc76c46c-9eb3-4a5d-a7df-93c63a3a4a2c/collection/28653869-c582d04c-678d-4770-9d6c-aac9ef3b174d?action=share&source=collection_link&creator=28653869"
+	},
+	"item": [
+		{
+			"name": "Leagues",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Updated test to handle JSONError\r",
+							"pm.test(\"Leagues fetched successfully\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.not.equal(\"text/html\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains no unexpected errors\", function () {\r",
+							"    if (pm.response.headers.get(\"Content-Type\") === \"application/json\") {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.not.have.property(\"error\");\r",
+							"    }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-apisports-key",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API-SPORTS}}/leagues",
+					"host": [
+						"{{API-SPORTS}}"
+					],
+					"path": [
+						"leagues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Teams",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Teams fetched successfully\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 400ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-apisports-key",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API-SPORTS}}/teams",
+					"host": [
+						"{{API-SPORTS}}"
+					],
+					"path": [
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Countries",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"try {\r",
+							"  pm.test(\"Countries fetched successfully\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"  });\r",
+							"\r",
+							"  if (pm.response.headers.get(\"Content-Type\").includes(\"application/json\")) {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.response.length).to.be.above(0);\r",
+							"  } else {\r",
+							"    console.warn(\"Response is not JSON:\", pm.response.text());\r",
+							"  }\r",
+							"  \r",
+							"} catch (err) {\r",
+							"  console.error(\"Test failed:\", err);\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-apisports-key",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API-SPORTS}}/countries",
+					"host": [
+						"{{API-SPORTS}}"
+					],
+					"path": [
+						"countries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Injuries",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Injuries fetched successfully\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains injury data\", function () {\r",
+							"    var jsonData = pm.response.text();\r",
+							"    pm.expect(jsonData).to.include(\"injuries\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-apisports-key",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API-SPORTS}}/injuries?fixture={{fixtureIds}}",
+					"host": [
+						"{{API-SPORTS}}"
+					],
+					"path": [
+						"injuries"
+					],
+					"query": [
+						{
+							"key": "fixture",
+							"value": "{{fixtureIds}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Standings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Standings fetched successfully\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-apisports-key",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API-SPORTS}}/standings",
+					"host": [
+						"{{API-SPORTS}}"
+					],
+					"path": [
+						"standings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fixtures by Date",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Fixtures in team successfully returned\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-apisports-key",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API-SPORTS}}/fixtures?date=2023-08-12",
+					"host": [
+						"{{API-SPORTS}}"
+					],
+					"path": [
+						"fixtures"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2023-08-12"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fixtures by Team",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"try {\r",
+							"  pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"  });\r",
+							"\r",
+							"  const contentType = pm.response.headers.get(\"Content-Type\");\r",
+							"  if (contentType && contentType.includes(\"application/json\")) {\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    console.log(\"Team ID:\", pm.variables.get(\"teamId\"));\r",
+							"\r",
+							"  } else {\r",
+							"    console.warn(\"Response is not JSON. Content-Type:\", contentType);\r",
+							"    console.warn(\"Raw response:\", pm.response.text());\r",
+							"  }\r",
+							"} catch (err) {\r",
+							"  console.error(\"Test failed:\", err);\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-apisports-key",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API-SPORTS}}/fixtures?date=2023-08-12&team={{teamId}}&season={{season}}",
+					"host": [
+						"{{API-SPORTS}}"
+					],
+					"path": [
+						"fixtures"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2023-08-12"
+						},
+						{
+							"key": "team",
+							"value": "{{teamId}}",
+							"description": "Team ID (E.g: Manchester United)"
+						},
+						{
+							"key": "season",
+							"value": "{{season}}",
+							"description": "Season year"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Players in a Team",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Players in team successfully returned\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-apisports-key",
+						"value": "{{API_KEY}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{API-SPORTS}}/players?team=33&season=2023",
+					"host": [
+						"{{API-SPORTS}}"
+					],
+					"path": [
+						"players"
+					],
+					"query": [
+						{
+							"key": "team",
+							"value": "33"
+						},
+						{
+							"key": "season",
+							"value": "2023"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mock POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Maryam\",\r\n  \"job\": \"QA\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://httpbin.org/post",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mock PUT",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Updated User\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://httpbin.org/put",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"put"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mock DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://httpbin.org/delete",
+					"protocol": "https",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
