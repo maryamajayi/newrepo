@@ -293,6 +293,10 @@
 							"\r",
 							"    console.log(\"Team ID:\", pm.variables.get(\"teamId\"));\r",
 							"\r",
+							"    pm.test(\"Team ID matches expected value\", function () {\r",
+							"      pm.expect(jsonData.parameters.team).to.eql(pm.variables.get(\"teamId\"));\r",
+							"    });\r",
+							"\r",
 							"  } else {\r",
 							"    console.warn(\"Response is not JSON. Content-Type:\", contentType);\r",
 							"    console.warn(\"Raw response:\", pm.response.text());\r",
@@ -412,7 +416,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"Maryam\",\r\n  \"job\": \"QA\"\r\n}\r\n",
+					"raw": "{\r\n  \"name\": \"Maryam\",\r\n  \"job\": \"QA\",\r\n  \"created_at\": \"{{$timestamp}}\"\r\n}\r\n\r\n\r\n{\r\n\r\n  \r\n}\r\n\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
