@@ -19,8 +19,11 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Install Newman
-      run: npm install -g newman
+    - name: Install Newman and HTML Extra Reporter
+      run: |
+        npm install -g newman
+        npm install -g newman-reporter-htmlextra
 
-    - name: Run Postman Collection
-      run: newman run CapstoneProject.json -e FootballAPI.json -r cli,html --reporter-json-export capstoneresults.json
+    - name: Run Postman Collection with HTML Report
+      run: |
+        newman run CapstoneProject.json -e FootballAPI.json -r cli,htmlextra --reporter-htmlextra-export capstoneresults.html
