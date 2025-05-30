@@ -23,4 +23,4 @@ jobs:
       run: npm install -g newman
 
     - name: Run Postman Collection
-      run: newman run CapstoneProject.json -e FootballAPI.json -r html --reporter-json-export results.json
+      run: newman run CapstoneProject.json -e FootballAPI.json -r cli,htmlextra --reporter-json-export capstoneresults.json
